@@ -1,0 +1,61 @@
+---
+interface Props {
+  name?: string;
+  role?: string;
+  bio?: string;
+  avatarUrl?: string;
+  links?: { label: string; url: string; icon?: string }[];
+}
+
+const { name, role, bio, avatarUrl, links = [] } = Astro.props;
+---
+
+<section class="relative">
+  <div class="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
+    <!-- Avatar -->
+    <div class="shrink-0">
+      {avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt={name ?? "Developer"}
+          class="h-32 w-32 rounded-2xl object-cover ring-2 ring-surface-800 sm:h-40 sm:w-40 light:ring-surface-200"
+        />
+      ) : (
+        <div class="flex h-32 w-32 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 text-5xl font-bold text-primary-400 ring-2 ring-surface-800 sm:h-40 sm:w-40 light:ring-surface-200 light:from-primary-100 light:to-accent-100 light:text-primary-600">
+          {name ? name[0] : "?"}
+        </div>
+      )}
+    </div>
+
+    <!-- Info -->
+    <div class="flex-1 text-center sm:text-left">
+      <h1 class="text-3xl font-bold tracking-tight text-surface-100 sm:text-4xl light:text-surface-900">
+        {name ?? "Nombre del Developer"}
+      </h1>
+
+      <p class="mt-2 text-lg font-medium text-primary-400 light:text-primary-600">
+        {role ?? "Rol profesional"}
+      </p>
+
+      <p class="mt-4 max-w-2xl text-base leading-relaxed text-surface-400 light:text-surface-600">
+        {bio ?? "Breve descripción profesional del developer."}
+      </p>
+
+      <!-- Social links -->
+      {links.length > 0 && (
+        <div class="mt-6 flex flex-wrap justify-center gap-3 sm:justify-start">
+          {links.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg border border-surface-700 bg-surface-800/50 px-3 py-1.5 text-sm text-surface-300 transition-all hover:border-primary-500/40 hover:text-primary-400 light:border-surface-300 light:bg-surface-100 light:text-surface-600 light:hover:border-primary-400 light:hover:text-primary-600"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

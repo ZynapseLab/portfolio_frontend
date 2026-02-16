@@ -1,0 +1,29 @@
+---
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
+import HeroSection from "../components/portfolio/HeroSection.astro";
+import SkillsSection from "../components/portfolio/SkillsSection.astro";
+import ExperienceSection from "../components/portfolio/ExperienceSection.astro";
+import ProjectsSection from "../components/portfolio/ProjectsSection.astro";
+import StackSection from "../components/portfolio/StackSection.astro";
+import ChatWidget from "../components/chat/ChatWidget";
+
+export function getStaticPaths() {
+  return [
+    { params: { developer: "jonathan" } },
+    { params: { developer: "pablo" } },
+  ];
+}
+
+const { developer } = Astro.params;
+
+const displayName = developer.charAt(0).toUpperCase() + developer.slice(1);
+---
+
+<PortfolioLayout developer={developer} title={`${displayName} — Portfolio`}>
+  <HeroSection name={displayName} />
+  <SkillsSection />
+  <ExperienceSection />
+  <ProjectsSection />
+  <StackSection />
+  <ChatWidget client:idle scope={developer} />
+</PortfolioLayout>

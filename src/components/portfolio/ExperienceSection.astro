@@ -1,0 +1,81 @@
+---
+interface Experience {
+  company: string;
+  role: string;
+  period: string;
+  description?: string;
+  tags?: string[];
+}
+
+interface Props {
+  experiences?: Experience[];
+}
+
+const { experiences = [] } = Astro.props;
+---
+
+<section>
+  <h2 class="text-2xl font-bold text-surface-100 light:text-surface-900">
+    Experiencia
+  </h2>
+  <div class="mt-1 h-1 w-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
+
+  <div class="mt-8 relative">
+    <!-- Timeline line -->
+    <div class="absolute left-[11px] top-2 bottom-2 w-px bg-surface-800 light:bg-surface-200"></div>
+
+    <div class="space-y-8">
+      {(experiences.length > 0 ? experiences : [
+        { company: "", role: "", period: "", description: "", tags: [] },
+        { company: "", role: "", period: "", description: "", tags: [] },
+        { company: "", role: "", period: "", description: "", tags: [] },
+      ]).map((exp) => (
+        <div class="relative pl-10">
+          {/* Timeline dot */}
+          <div class="absolute left-0 top-1.5 h-6 w-6 rounded-full border-2 border-surface-800 bg-surface-950 flex items-center justify-center light:border-surface-300 light:bg-white">
+            <div class="h-2 w-2 rounded-full bg-primary-500"></div>
+          </div>
+
+          <div class="rounded-xl border border-surface-800/60 bg-surface-900/40 p-5 transition-all hover:border-surface-700 light:border-surface-200 light:bg-white light:hover:border-surface-300">
+            {exp.company ? (
+              <>
+                <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                  <h3 class="text-base font-semibold text-surface-100 light:text-surface-900">
+                    {exp.role}
+                  </h3>
+                  <span class="text-xs font-medium text-surface-500">
+                    {exp.period}
+                  </span>
+                </div>
+                <p class="mt-1 text-sm font-medium text-primary-400 light:text-primary-600">
+                  {exp.company}
+                </p>
+                {exp.description && (
+                  <p class="mt-3 text-sm leading-relaxed text-surface-400 light:text-surface-600">
+                    {exp.description}
+                  </p>
+                )}
+                {exp.tags && exp.tags.length > 0 && (
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {exp.tags.map((tag) => (
+                      <span class="rounded-full bg-surface-800/80 px-2 py-0.5 text-xs text-surface-400 light:bg-surface-100 light:text-surface-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                <div class="h-5 w-48 rounded bg-surface-800 light:bg-surface-200"></div>
+                <div class="mt-2 h-4 w-32 rounded bg-surface-800/60 light:bg-surface-200/60"></div>
+                <div class="mt-3 h-3 w-full rounded bg-surface-800/40 light:bg-surface-200/40"></div>
+                <div class="mt-1.5 h-3 w-3/4 rounded bg-surface-800/40 light:bg-surface-200/40"></div>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

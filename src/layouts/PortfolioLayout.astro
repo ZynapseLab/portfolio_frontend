@@ -1,0 +1,25 @@
+---
+import MainLayout from "./MainLayout.astro";
+
+interface Props {
+  developer: string;
+  title: string;
+}
+
+const { developer, title } = Astro.props;
+---
+
+<MainLayout title={title}>
+  <Fragment slot="nav-actions">
+    <a
+      href="/"
+      class="text-sm text-surface-400 hover:text-primary-400 transition-colors light:text-surface-500 light:hover:text-primary-600"
+    >
+      &larr; Volver al inicio
+    </a>
+  </Fragment>
+
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+    <slot />
+  </div>
+</MainLayout>

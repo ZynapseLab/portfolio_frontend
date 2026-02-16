@@ -1,7 +1,3 @@
-Aquí tienes las **historias de usuario convertidas a Markdown técnico**, con lenguaje mejorado, consistente y optimizado para desarrolladores. He mantenido todas tus decisiones, pero con **claridad de implementación, criterios de aceptación y contratos explícitos**.
-
----
-
 # 🧩 EPIC 1 — Frontend Portfolio IA (Astro + React Islands)
 
 ---

@@ -1,0 +1,76 @@
+---
+interface Skill {
+  name: string;
+  level?: number; // 1-5
+  category?: string;
+}
+
+interface Props {
+  skills?: Skill[];
+}
+
+const { skills = [] } = Astro.props;
+
+const grouped = skills.reduce<Record<string, Skill[]>>((acc, skill) => {
+  const cat = skill.category ?? "General";
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(skill);
+  return acc;
+}, {});
+
+const categories = Object.entries(grouped);
+---
+
+<section>
+  <h2 class="text-2xl font-bold text-surface-100 light:text-surface-900">
+    Skills
+  </h2>
+  <div class="mt-1 h-1 w-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
+
+  {categories.length > 0 ? (
+    <div class="mt-8 space-y-8">
+      {categories.map(([category, items]) => (
+        <div>
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-surface-500 light:text-surface-400">
+            {category}
+          </h3>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {items.map((skill) => (
+              <div class="group rounded-xl border border-surface-800/60 bg-surface-900/40 p-4 transition-all hover:border-primary-500/30 hover:bg-surface-800/50 light:border-surface-200 light:bg-white light:hover:border-primary-400/30">
+                <p class="text-sm font-medium text-surface-200 light:text-surface-800">
+                  {skill.name}
+                </p>
+                {skill.level && (
+                  <div class="mt-2 flex gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <span
+                        class={`h-1 flex-1 rounded-full ${
+                          i < skill.level!
+                            ? "bg-primary-500"
+                            : "bg-surface-700 light:bg-surface-200"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      {Array.from({ length: 8 }).map(() => (
+        <div class="rounded-xl border border-surface-800/60 bg-surface-900/40 p-4 light:border-surface-200 light:bg-white">
+          <div class="h-4 w-20 rounded bg-surface-800 light:bg-surface-200"></div>
+          <div class="mt-2 flex gap-1">
+            {Array.from({ length: 5 }).map(() => (
+              <span class="h-1 flex-1 rounded-full bg-surface-800 light:bg-surface-200" />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</section>
