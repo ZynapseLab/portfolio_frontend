@@ -37,7 +37,7 @@ export default function SuggestionList({ scope, onSelect }: Props) {
         <button
           key={text}
           onClick={() => onSelect(text)}
-          className="rounded-full border border-surface-700 bg-surface-800/50 px-3 py-1.5 text-xs text-surface-300 transition-all hover:border-primary-500/40 hover:bg-primary-500/10 hover:text-primary-300 active:scale-95 light:border-surface-300 light:bg-surface-100 light:text-surface-600 light:hover:border-primary-400/40 light:hover:bg-primary-50 light:hover:text-primary-600"
+          className="rounded-full border border-th-border-strong bg-th-bg-subtle px-3 py-1.5 text-xs text-th-text-sub transition-all hover:border-primary-500/40 hover:bg-th-primary-soft hover:text-th-primary active:scale-95"
         >
           {text}
         </button>

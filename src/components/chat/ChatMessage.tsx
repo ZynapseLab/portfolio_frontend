@@ -14,7 +14,7 @@ export default function ChatMessage({ message, isStreaming = false }: Props) {
         className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
           isUser
             ? "bg-primary-500 text-white rounded-br-md"
-            : "bg-surface-800 text-surface-200 rounded-bl-md light:bg-surface-100 light:text-surface-800"
+            : "bg-th-bg-subtle text-th-text-strong rounded-bl-md"
         }`}
       >
         <p className="whitespace-pre-wrap break-words">

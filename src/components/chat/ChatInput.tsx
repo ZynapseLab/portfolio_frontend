@@ -37,7 +37,7 @@ export default function ChatInput({ onSend, disabled = false, isStreaming = fals
   const isDisabled = disabled || isStreaming;
 
   return (
-    <div className="flex items-end gap-2 rounded-xl border border-surface-700 bg-surface-800/50 p-2 transition-colors focus-within:border-primary-500/50 light:border-surface-300 light:bg-white light:focus-within:border-primary-400">
+    <div className="flex items-end gap-2 rounded-xl border border-th-border-strong bg-th-bg-subtle p-2 transition-colors focus-within:border-primary-500/50">
       <textarea
         ref={textareaRef}
         value={value}
@@ -50,7 +50,7 @@ export default function ChatInput({ onSend, disabled = false, isStreaming = fals
             : "Escribe tu mensaje..."
         }
         rows={1}
-        className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-surface-100 placeholder-surface-500 outline-none disabled:cursor-not-allowed disabled:opacity-50 light:text-surface-900 light:placeholder-surface-400"
+        className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-th-text placeholder-th-text-faint outline-none disabled:cursor-not-allowed disabled:opacity-50"
       />
       <button
         onClick={handleSubmit}

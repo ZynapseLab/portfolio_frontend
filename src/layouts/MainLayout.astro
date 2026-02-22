@@ -26,7 +26,7 @@ const { title, description = "Equipo de IA especializado en soluciones inteligen
     <title>{title} | Zynapse Labs</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-surface-800/50 bg-surface-950/80 backdrop-blur-xl light:bg-white/80 light:border-surface-200/50">
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-th-border bg-th-bg-nav backdrop-blur-xl">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="/" class="flex items-center gap-2 group">
@@ -46,14 +46,14 @@ const { title, description = "Equipo de IA especializado en soluciones inteligen
       <slot />
     </main>
 
-    <footer class="border-t border-surface-800/50 light:border-surface-200/50 py-8">
+    <footer class="border-t border-th-border py-8">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p class="text-sm text-surface-400 light:text-surface-500">
+          <p class="text-sm text-th-text-muted">
             &copy; {new Date().getFullYear()} Zynapse Labs. Todos los derechos reservados.
           </p>
           <div class="flex items-center gap-6">
-            <a href="/" class="text-sm text-surface-400 hover:text-primary-400 transition-colors light:text-surface-500 light:hover:text-primary-600">
+            <a href="/" class="text-sm text-th-text-muted hover:text-th-primary transition-colors">
               Inicio
             </a>
           </div>

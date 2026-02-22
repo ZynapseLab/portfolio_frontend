@@ -11,7 +11,7 @@ export default function UsageBar({ usage }: Props) {
   return (
     <div className="flex items-center gap-3">
       <div className="flex-1">
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-surface-800 light:bg-surface-200">
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-th-skeleton">
           <div
             className={`h-full rounded-full transition-all duration-500 ${
               isExhausted
@@ -27,8 +27,8 @@ export default function UsageBar({ usage }: Props) {
       <span
         className={`text-xs font-medium tabular-nums ${
           isExhausted
-            ? "text-red-400 light:text-red-600"
-            : "text-surface-400 light:text-surface-500"
+            ? "text-th-error"
+            : "text-th-text-muted"
         }`}
       >
         {usage.used}/{usage.limit}

@@ -17,14 +17,14 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="h-9 w-9 rounded-lg bg-surface-800/50 light:bg-surface-200/50" />
+      <div className="h-9 w-9 rounded-lg bg-th-bg-subtle" />
     );
   }
 
   return (
     <button
       onClick={handleToggle}
-      className="flex h-9 w-9 items-center justify-center rounded-lg text-surface-400 transition-colors hover:bg-surface-800 hover:text-surface-200 light:hover:bg-surface-200 light:hover:text-surface-700"
+      className="flex h-9 w-9 items-center justify-center rounded-lg text-th-text-muted transition-colors hover:bg-th-hover hover:text-th-text-strong"
       aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
     >
       {theme === "dark" ? (
