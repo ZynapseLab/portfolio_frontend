@@ -1,16 +1,25 @@
 ---
+import { useTranslations, getLocalePath, type Lang } from "../../i18n/utils";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+
 const team = [
   {
     name: "Jonathan",
     slug: "jonathan",
     role: "AI Engineer",
-    summary: "Especialista en agentes inteligentes, LangGraph y arquitecturas RAG.",
+    summary: t("team.jonathan.summary"),
   },
   {
     name: "Pablo",
     slug: "pablo",
     role: "AI Full-Stack Developer",
-    summary: "Desarrollo full-stack con foco en integración de modelos de IA y pipelines de datos.",
+    summary: t("team.pablo.summary"),
   },
 ];
 ---
@@ -20,14 +29,13 @@ const team = [
     <!-- Section header -->
     <div class="mx-auto max-w-2xl text-center">
       <span class="text-sm font-semibold uppercase tracking-widest text-th-primary">
-        Nuestro equipo
+        {t("team.label")}
       </span>
       <h2 class="mt-3 text-3xl font-bold tracking-tight text-th-text sm:text-4xl">
-        Conoce a los expertos
+        {t("team.title")}
       </h2>
       <p class="mt-4 text-lg text-th-text-muted">
-        Un equipo comprometido con la excelencia en inteligencia artificial
-        y desarrollo de software.
+        {t("team.subtitle")}
       </p>
     </div>
 
@@ -35,7 +43,7 @@ const team = [
     <div class="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 sm:grid-cols-2">
       {team.map((member) => (
         <a
-          href={`/${member.slug}`}
+          href={getLocalePath(`/${member.slug}`, lang)}
           class="group relative rounded-2xl border border-th-border bg-th-bg-card p-8 transition-all duration-300 hover:border-primary-500/30 hover:bg-th-bg-subtle hover:shadow-lg hover:shadow-primary-500/5"
         >
           <!-- Avatar placeholder -->
@@ -57,7 +65,7 @@ const team = [
 
           <!-- Arrow indicator -->
           <div class="mt-6 flex items-center gap-2 text-sm font-medium text-th-text-faint group-hover:text-th-primary transition-colors">
-            Ver portfolio
+            {t("team.viewPortfolio")}
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>

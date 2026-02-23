@@ -1,0 +1,14 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import HeroLanding from "../../components/landing/HeroLanding.astro";
+import TeamSection from "../../components/landing/TeamSection.astro";
+import ServicesSection from "../../components/landing/ServicesSection.astro";
+import ChatWidget from "../../components/chat/ChatWidget";
+---
+
+<MainLayout title="Home" lang="en">
+  <HeroLanding lang="en" />
+  <ServicesSection lang="en" />
+  <TeamSection lang="en" />
+  <ChatWidget client:idle scope="global" lang="en" />
+</MainLayout>
