@@ -1,21 +1,26 @@
 ---
 import "../styles/global.css";
 import ThemeToggle from "../components/ui/ThemeToggle";
+import LanguageSwitcher from "../components/ui/LanguageSwitcher.astro";
+import { useTranslations, getLocalePath, type Lang } from "../i18n/utils";
 
 interface Props {
   title: string;
   description?: string;
+  lang?: Lang;
 }
 
-const { title, description = "Equipo de IA especializado en soluciones inteligentes. Conoce nuestras habilidades, proyectos y servicios." } = Astro.props;
+const { title, lang = "es", description } = Astro.props;
+const t = useTranslations(lang);
+const metaDescription = description ?? t("meta.description");
 ---
 
-<html lang="es" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,14 +34,15 @@ const { title, description = "Equipo de IA especializado en soluciones inteligen
     <nav class="fixed top-0 left-0 right-0 z-50 border-b border-th-border bg-th-bg-nav backdrop-blur-xl">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-          <a href="/" class="flex items-center gap-2 group">
+          <a href={getLocalePath("/", lang)} class="flex items-center gap-2 group">
             <span class="text-xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
               Zynapse Labs
             </span>
           </a>
           <div class="flex items-center gap-4">
             <slot name="nav-actions" />
-            <ThemeToggle client:load />
+            <LanguageSwitcher lang={lang} />
+            <ThemeToggle client:load lang={lang} />
           </div>
         </div>
       </div>
@@ -50,11 +56,11 @@ const { title, description = "Equipo de IA especializado en soluciones inteligen
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p class="text-sm text-th-text-muted">
-            &copy; {new Date().getFullYear()} Zynapse Labs. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Zynapse Labs. {t("footer.rights")}
           </p>
           <div class="flex items-center gap-6">
-            <a href="/" class="text-sm text-th-text-muted hover:text-th-primary transition-colors">
-              Inicio
+            <a href={getLocalePath("/", lang)} class="text-sm text-th-text-muted hover:text-th-primary transition-colors">
+              {t("nav.home")}
             </a>
           </div>
         </div>

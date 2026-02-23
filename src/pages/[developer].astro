@@ -19,11 +19,11 @@ const { developer } = Astro.params;
 const displayName = developer.charAt(0).toUpperCase() + developer.slice(1);
 ---
 
-<PortfolioLayout developer={developer} title={`${displayName} — Portfolio`}>
-  <HeroSection name={displayName} />
-  <SkillsSection />
-  <ExperienceSection />
-  <ProjectsSection />
-  <StackSection />
-  <ChatWidget client:idle scope={developer} />
+<PortfolioLayout developer={developer} title={`${displayName} — Portfolio`} lang="es">
+  <HeroSection name={displayName} lang="es" />
+  <SkillsSection lang="es" />
+  <ExperienceSection lang="es" />
+  <ProjectsSection lang="es" />
+  <StackSection lang="es" />
+  <ChatWidget client:idle scope={developer} lang="es" />
 </PortfolioLayout>

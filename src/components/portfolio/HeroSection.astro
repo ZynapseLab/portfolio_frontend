@@ -1,13 +1,17 @@
 ---
+import { useTranslations, type Lang } from "../../i18n/utils";
+
 interface Props {
   name?: string;
   role?: string;
   bio?: string;
   avatarUrl?: string;
   links?: { label: string; url: string; icon?: string }[];
+  lang?: Lang;
 }
 
-const { name, role, bio, avatarUrl, links = [] } = Astro.props;
+const { name, role, bio, avatarUrl, links = [], lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="relative">
@@ -30,15 +34,15 @@ const { name, role, bio, avatarUrl, links = [] } = Astro.props;
     <!-- Info -->
     <div class="flex-1 text-center sm:text-left">
       <h1 class="text-3xl font-bold tracking-tight text-th-text sm:text-4xl">
-        {name ?? "Nombre del Developer"}
+        {name ?? t("portfolio.hero.nameFallback")}
       </h1>
 
       <p class="mt-2 text-lg font-medium text-th-primary">
-        {role ?? "Rol profesional"}
+        {role ?? t("portfolio.hero.roleFallback")}
       </p>
 
       <p class="mt-4 max-w-2xl text-base leading-relaxed text-th-text-muted">
-        {bio ?? "Breve descripción profesional del developer."}
+        {bio ?? t("portfolio.hero.bioFallback")}
       </p>
 
       <!-- Social links -->

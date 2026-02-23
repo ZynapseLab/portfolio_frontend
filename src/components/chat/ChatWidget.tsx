@@ -2,6 +2,8 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import type { ChatMessage as ChatMessageType, UsageInfo } from "../../types/chat";
 import { sendMessage, deleteConversation, getUsageStats } from "../../services/chatService";
 import { ToastProvider, useToast } from "../ui/Toast";
+import { useTranslations } from "../../i18n/utils";
+import type { Lang } from "../../i18n/utils";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import SuggestionList from "./SuggestionList";
@@ -12,9 +14,10 @@ const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
 
 interface Props {
   scope: string;
+  lang?: Lang;
 }
 
-function ChatWidgetInner({ scope }: Props) {
+function ChatWidgetInner({ scope, lang = "es" }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
@@ -27,6 +30,7 @@ function ChatWidgetInner({ scope }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const { addToast } = useToast();
+  const t = useTranslations(lang);
 
   const scrollToBottom = useCallback(() => {
     requestAnimationFrame(() => {
@@ -109,7 +113,7 @@ function ChatWidgetInner({ scope }: Props) {
           },
           onUsage: (info) => {
             if (info.used >= info.limit) {
-              addToast("Has alcanzado el límite diario de mensajes.", "error");
+              addToast(t("chat.limitReached"), "error");
             }
           },
           onError: (errMsg) => {
@@ -131,9 +135,9 @@ function ChatWidgetInner({ scope }: Props) {
       setMessages([]);
       setShowDeleteConfirm(false);
       setError(null);
-      addToast("Conversación borrada correctamente.", "success");
+      addToast(t("chat.deleted"), "success");
     } else {
-      addToast("No se pudo borrar la conversación.", "error");
+      addToast(t("chat.deleteError"), "error");
     }
   }, [scope, addToast]);
 
@@ -144,7 +148,7 @@ function ChatWidgetInner({ scope }: Props) {
         <button
           onClick={handleOpen}
           className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-500/25 transition-all hover:shadow-primary-500/40 hover:scale-105 active:scale-95"
-          aria-label="Abrir chat"
+          aria-label={t("chat.ariaOpen")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -172,7 +176,7 @@ function ChatWidgetInner({ scope }: Props) {
                   Zynapse Assistant
                 </p>
                 <p className="text-xs text-th-text-faint">
-                  {scope === "global" ? "Equipo" : scope}
+                  {scope === "global" ? t("chat.scopeGlobal") : scope}
                 </p>
               </div>
             </div>
@@ -181,7 +185,7 @@ function ChatWidgetInner({ scope }: Props) {
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
                   className="rounded-lg p-2 text-th-text-faint transition-colors hover:bg-th-hover hover:text-th-text-sub"
-                  aria-label="Borrar conversación"
+                  aria-label={t("chat.ariaDelete")}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -191,7 +195,7 @@ function ChatWidgetInner({ scope }: Props) {
               <button
                 onClick={handleClose}
                 className="rounded-lg p-2 text-th-text-faint transition-colors hover:bg-th-hover hover:text-th-text-sub"
-                aria-label="Cerrar chat"
+                aria-label={t("chat.ariaClose")}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -216,14 +220,14 @@ function ChatWidgetInner({ scope }: Props) {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-th-text-sub">
-                    ¡Hola! ¿En qué puedo ayudarte?
+                    {t("chat.greeting")}
                   </p>
                   <p className="mt-1 text-xs text-th-text-faint">
-                    Pregúntame sobre nuestras habilidades, proyectos y servicios.
+                    {t("chat.greetingHint")}
                   </p>
                 </div>
                 <div className="mt-2 w-full">
-                  <SuggestionList scope={scope} onSelect={handleSend} />
+                  <SuggestionList scope={scope} onSelect={handleSend} lang={lang} />
                 </div>
               </div>
             )}
@@ -250,20 +254,20 @@ function ChatWidgetInner({ scope }: Props) {
           {showDeleteConfirm && (
             <div className="mx-4 mb-2 flex items-center justify-between rounded-lg border border-th-border-strong bg-th-bg-card px-3 py-2 animate-in">
               <p className="text-xs text-th-text-sub">
-                ¿Borrar la conversación?
+                {t("chat.deleteConfirm")}
               </p>
               <div className="flex gap-2">
                 <button
                   onClick={() => setShowDeleteConfirm(false)}
                   className="rounded px-2 py-1 text-xs text-th-text-muted hover:text-th-text-strong"
                 >
-                  Cancelar
+                  {t("chat.cancel")}
                 </button>
                 <button
                   onClick={handleDelete}
                   className="rounded bg-th-error-soft px-2 py-1 text-xs text-th-error hover:opacity-80"
                 >
-                  Borrar
+                  {t("chat.delete")}
                 </button>
               </div>
             </div>
@@ -275,6 +279,7 @@ function ChatWidgetInner({ scope }: Props) {
               onSend={handleSend}
               disabled={isLimitReached}
               isStreaming={isStreaming || isWaiting}
+              lang={lang}
             />
           </div>
         </div>
@@ -283,10 +288,10 @@ function ChatWidgetInner({ scope }: Props) {
   );
 }
 
-export default function ChatWidget({ scope }: Props) {
+export default function ChatWidget({ scope, lang = "es" }: Props) {
   return (
     <ToastProvider>
-      <ChatWidgetInner scope={scope} />
+      <ChatWidgetInner scope={scope} lang={lang} />
     </ToastProvider>
   );
 }

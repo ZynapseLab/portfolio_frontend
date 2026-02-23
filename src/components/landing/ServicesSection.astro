@@ -1,33 +1,42 @@
 ---
+import { useTranslations, type Lang } from "../../i18n/utils";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "es" } = Astro.props;
+const t = useTranslations(lang);
+
 const services = [
   {
-    title: "Chatbots Inteligentes",
-    description: "Asistentes conversacionales con IA generativa, integrados en web, WhatsApp o plataformas empresariales.",
+    title: t("services.chatbots.title"),
+    description: t("services.chatbots.description"),
     icon: "chat",
   },
   {
-    title: "Sistemas RAG",
-    description: "Búsqueda semántica y generación aumentada por recuperación sobre tus propios datos y documentos.",
+    title: t("services.rag.title"),
+    description: t("services.rag.description"),
     icon: "search",
   },
   {
-    title: "Agentes Autónomos",
-    description: "Agentes multi-paso con LangGraph que razonan, planifican y ejecutan tareas complejas.",
+    title: t("services.agents.title"),
+    description: t("services.agents.description"),
     icon: "agent",
   },
   {
-    title: "Pipelines de Datos",
-    description: "ETL inteligente, procesamiento de documentos y flujos de datos con integración de modelos ML/IA.",
+    title: t("services.pipelines.title"),
+    description: t("services.pipelines.description"),
     icon: "data",
   },
   {
-    title: "Integración de APIs IA",
-    description: "Conexión con OpenAI, Anthropic, Google y modelos open-source para tus aplicaciones.",
+    title: t("services.apis.title"),
+    description: t("services.apis.description"),
     icon: "api",
   },
   {
-    title: "Consultoría IA",
-    description: "Evaluación, diseño de arquitectura y estrategia de adopción de IA para tu empresa.",
+    title: t("services.consulting.title"),
+    description: t("services.consulting.description"),
     icon: "strategy",
   },
 ];
@@ -47,13 +56,13 @@ const iconPaths: Record<string, string> = {
     <!-- Section header -->
     <div class="mx-auto max-w-2xl text-center">
       <span class="text-sm font-semibold uppercase tracking-widest text-th-accent">
-        Servicios
+        {t("services.label")}
       </span>
       <h2 class="mt-3 text-3xl font-bold tracking-tight text-th-text sm:text-4xl">
-        Lo que podemos hacer por ti
+        {t("services.title")}
       </h2>
       <p class="mt-4 text-lg text-th-text-muted">
-        Soluciones end-to-end en inteligencia artificial, desde la idea hasta producción.
+        {t("services.subtitle")}
       </p>
     </div>
 

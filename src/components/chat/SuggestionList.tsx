@@ -1,35 +1,30 @@
+import { useTranslations } from "../../i18n/utils";
+import type { Lang } from "../../i18n/utils";
+
 interface Props {
   scope: string;
   onSelect: (text: string) => void;
+  lang?: Lang;
 }
 
-const globalSuggestions = [
-  "¿Qué servicios de IA ofrecen?",
-  "¿Cuál es su experiencia con LLMs?",
-  "¿Han trabajado con sistemas RAG?",
-  "¿Cómo puedo contactarlos?",
-];
+export default function SuggestionList({ scope, onSelect, lang = "es" }: Props) {
+  const t = useTranslations(lang);
 
-const developerSuggestions: Record<string, string[]> = {
-  jonathan: [
-    "¿Cuáles son tus habilidades principales?",
-    "¿Qué proyectos de IA has desarrollado?",
-    "¿Con qué tecnologías trabajas?",
-    "Cuéntame sobre tu experiencia",
-  ],
-  pablo: [
-    "¿Cuáles son tus habilidades principales?",
-    "¿Qué proyectos de IA has desarrollado?",
-    "¿Con qué tecnologías trabajas?",
-    "Cuéntame sobre tu experiencia",
-  ],
-};
+  const globalSuggestions = [
+    t("suggestions.global.1"),
+    t("suggestions.global.2"),
+    t("suggestions.global.3"),
+    t("suggestions.global.4"),
+  ];
 
-export default function SuggestionList({ scope, onSelect }: Props) {
-  const suggestions =
-    scope === "global"
-      ? globalSuggestions
-      : developerSuggestions[scope] ?? globalSuggestions;
+  const developerSuggestions = [
+    t("suggestions.developer.1"),
+    t("suggestions.developer.2"),
+    t("suggestions.developer.3"),
+    t("suggestions.developer.4"),
+  ];
+
+  const suggestions = scope === "global" ? globalSuggestions : developerSuggestions;
 
   return (
     <div className="flex flex-wrap gap-2">

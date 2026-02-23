@@ -1,4 +1,6 @@
 ---
+import { useTranslations, type Lang } from "../../i18n/utils";
+
 interface TechItem {
   name: string;
   iconUrl?: string;
@@ -11,22 +13,24 @@ interface StackCategory {
 
 interface Props {
   stack?: StackCategory[];
+  lang?: Lang;
 }
 
-const { stack = [] } = Astro.props;
+const { stack = [], lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section>
   <h2 class="text-2xl font-bold text-th-text">
-    Stack Tecnológico
+    {t("portfolio.stack")}
   </h2>
   <div class="mt-1 h-1 w-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
 
   <div class="mt-8 space-y-8">
     {(stack.length > 0 ? stack : [
-      { category: "Lenguajes", items: Array.from({ length: 4 }, () => ({ name: "" })) },
-      { category: "Frameworks", items: Array.from({ length: 4 }, () => ({ name: "" })) },
-      { category: "Herramientas", items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.languages"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.frameworks"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.tools"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
     ]).map((group) => (
       <div>
         <h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-th-text-faint">

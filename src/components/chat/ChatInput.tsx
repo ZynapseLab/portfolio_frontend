@@ -1,14 +1,18 @@
 import { useState, useRef, useCallback } from "react";
+import { useTranslations } from "../../i18n/utils";
+import type { Lang } from "../../i18n/utils";
 
 interface Props {
   onSend: (message: string) => void;
   disabled?: boolean;
   isStreaming?: boolean;
+  lang?: Lang;
 }
 
-export default function ChatInput({ onSend, disabled = false, isStreaming = false }: Props) {
+export default function ChatInput({ onSend, disabled = false, isStreaming = false, lang = "es" }: Props) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const t = useTranslations(lang);
 
   const handleSubmit = useCallback(() => {
     const trimmed = value.trim();
@@ -46,8 +50,8 @@ export default function ChatInput({ onSend, disabled = false, isStreaming = fals
         disabled={isDisabled}
         placeholder={
           disabled
-            ? "Límite diario alcanzado"
-            : "Escribe tu mensaje..."
+            ? t("chat.input.limitReached")
+            : t("chat.input.placeholder")
         }
         rows={1}
         className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-th-text placeholder-th-text-faint outline-none disabled:cursor-not-allowed disabled:opacity-50"
@@ -56,7 +60,7 @@ export default function ChatInput({ onSend, disabled = false, isStreaming = fals
         onClick={handleSubmit}
         disabled={isDisabled || !value.trim()}
         className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-500 text-white transition-all hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-40 active:scale-95"
-        aria-label="Enviar mensaje"
+        aria-label={t("chat.input.ariaSend")}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
