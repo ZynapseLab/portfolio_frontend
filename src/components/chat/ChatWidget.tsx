@@ -8,7 +8,6 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import SuggestionList from "./SuggestionList";
 import UsageBar from "./UsageBar";
-import TypingIndicator from "./TypingIndicator";
 
 const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
 
@@ -108,6 +107,9 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
             }
           },
           onDone: () => {
+            getUsageStats(scope).then((usage) => {
+              setUsage(usage);
+            });
             setIsStreaming(false);
             setIsWaiting(false);
           },
@@ -239,8 +241,6 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
                 isStreaming={isStreaming && idx === messages.length - 1 && msg.role === "assistant"}
               />
             ))}
-
-            {isWaiting && <TypingIndicator />}
           </div>
 
           {/* Error */}
