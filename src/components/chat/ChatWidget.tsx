@@ -50,13 +50,13 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
 
       if (history) {
         setMessages(history.messages);
-      } 
+      }
 
       setUsage(usage);
     }
 
     fetchChatContext();
-  }, [scope]);
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
@@ -193,7 +193,7 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              {messages.length > 0 && (
+              {(messages ?? []).length > 0 && (
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
                   className="rounded-lg p-2 text-th-text-faint transition-colors hover:bg-th-hover hover:text-th-text-sub"
@@ -223,7 +223,7 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
 
           {/* Messages */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 scroll-smooth">
-            {messages.length === 0 && !isWaiting && (
+            {(messages ?? []).length === 0 && !isWaiting && (
               <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-th-primary-soft text-th-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -244,7 +244,7 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
               </div>
             )}
 
-            {messages.map((msg, idx) => (
+            {(messages ?? []).map((msg, idx) => (
               <ChatMessage
                 key={msg.id}
                 message={msg}
