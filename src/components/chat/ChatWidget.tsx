@@ -8,6 +8,7 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import SuggestionList from "./SuggestionList";
 import UsageBar from "./UsageBar";
+import TypingIndicator from "./TypingIndicator";
 
 const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
 
@@ -242,6 +243,8 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
               />
             ))}
           </div>
+
+          {isWaiting && <TypingIndicator />}
 
           {/* Error */}
           {error && (
