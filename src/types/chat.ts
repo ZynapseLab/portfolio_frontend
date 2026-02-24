@@ -9,6 +9,12 @@ export interface ChatMessage {
   timestamp: number;
 }
 
+export interface ConversationHistory {
+  id: string;
+  messages: ChatMessage[];
+  createdAt: string;
+}
+
 export interface UsageInfo {
   used: number;
   limit: number;

@@ -1,4 +1,8 @@
-import type { NdjsonChunk, UsageInfo } from "../types/chat";
+import type {
+  NdjsonChunk,
+  UsageInfo,
+  ConversationHistory,
+} from "../types/chat";
 
 const API_BASE = import.meta.env.API_URL ?? "http://localhost:8000";
 const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
@@ -114,5 +118,28 @@ export async function getUsageStats(scope: string): Promise<UsageInfo> {
       limit: MAX_MESSAGES_PER_DAY,
       resetAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
     };
+  }
+}
+
+export async function getConversationHistory(
+  scope: string,
+): Promise<ConversationHistory | null> {
+  try {
+    const response = await fetch(`${API_BASE}/chat/history`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ scope }),
+    });
+
+    const data = await response.json();
+
+    return {
+      id: data.id,
+      messages: data.messages,
+      createdAt: data.created_at,
+    };
+  } catch (error) {
+    return null;
   }
 }

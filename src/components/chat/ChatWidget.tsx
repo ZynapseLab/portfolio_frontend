@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import type { ChatMessage as ChatMessageType, UsageInfo } from "../../types/chat";
-import { sendMessage, deleteConversation, getUsageStats } from "../../services/chatService";
+import { sendMessage, deleteConversation, getUsageStats, getConversationHistory } from "../../services/chatService";
 import { ToastProvider, useToast } from "../ui/Toast";
 import { useTranslations } from "../../i18n/utils";
 import type { Lang } from "../../i18n/utils";
@@ -44,9 +44,18 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
   }, []);
 
   useEffect(() => {
-    getUsageStats(scope).then((usage) => {
+    async function fetchChatContext() {
+      const history = await getConversationHistory(scope);
+      const usage = await getUsageStats(scope);
+
+      if (history) {
+        setMessages(history.messages);
+      } 
+
       setUsage(usage);
-    });
+    }
+
+    fetchChatContext();
   }, [scope]);
 
   useEffect(() => {
@@ -242,9 +251,9 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
                 isStreaming={isStreaming && idx === messages.length - 1 && msg.role === "assistant"}
               />
             ))}
-          </div>
 
-          {isWaiting && <TypingIndicator />}
+            {isWaiting && <TypingIndicator />}
+          </div>
 
           {/* Error */}
           {error && (
