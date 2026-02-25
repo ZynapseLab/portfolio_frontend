@@ -59,8 +59,9 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
   }, []);
 
   useEffect(() => {
+    if (!isOpen) return;
     scrollToBottom();
-  }, [messages, isWaiting, scrollToBottom]);
+  }, [messages, isWaiting, scrollToBottom, isOpen]);
 
 
   const handleOpen = useCallback(() => {
