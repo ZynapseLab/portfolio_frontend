@@ -87,6 +87,10 @@
   --color-th-error-soft: var(--th-error-soft);
   --color-th-success: var(--th-success);
   --color-th-success-soft: var(--th-success-soft);
+
+  /* Chat overlay */
+  --color-th-chat-surface: var(--th-chat-surface);
+  --color-th-chat-border: var(--th-chat-border);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -121,6 +125,8 @@
       --th-error-soft:     rgba(239, 68, 68, 0.1);
       --th-success:        #34d399;
       --th-success-soft:   rgba(16, 185, 129, 0.1);
+      --th-chat-surface:   rgba(2, 6, 23, 0.92);
+      --th-chat-border:    rgba(255, 255, 255, 0.08);
     }
     .light {
       --th-bg:             #f0f9ff;
@@ -132,7 +138,7 @@
       --th-text-strong:    #082f49;
       --th-text-sub:       #0369a1;
       --th-text-muted:     #0284c7;
-      --th-text-faint:     #7dd3fc;
+      --th-text-faint:     #64748b;
       --th-primary:        #0284c7;
       --th-primary-hover:  #0369a1;
       --th-accent:         #6366f1;
@@ -149,6 +155,8 @@
       --th-error-soft:     #fef2f2;
       --th-success:        #059669;
       --th-success-soft:   #ecfdf5;
+      --th-chat-surface:   rgba(255, 255, 255, 0.95);
+      --th-chat-border:    rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -242,4 +250,24 @@
   padding-left: 0.75em;
   margin: 0.5em 0;
   opacity: 0.85;
+}
+
+/* ────────────────────────────────────────────────────────────
+   CHAT OVERLAY ANIMATIONS
+   ──────────────────────────────────────────────────────────── */
+
+.chat-overlay {
+  pointer-events: none;
+}
+
+.chat-overlay--open {
+  pointer-events: auto;
+}
+
+.chat-overlay--closed {
+  pointer-events: auto;
+}
+
+.chat-panel {
+  will-change: transform, opacity;
 }
