@@ -6,6 +6,7 @@ import ExperienceSection from "../components/portfolio/ExperienceSection.astro";
 import ProjectsSection from "../components/portfolio/ProjectsSection.astro";
 import StackSection from "../components/portfolio/StackSection.astro";
 import ChatWidget from "../components/chat/ChatWidget";
+import { getDeveloperData } from "../data";
 
 export function getStaticPaths() {
   return [
@@ -15,15 +16,22 @@ export function getStaticPaths() {
 }
 
 const { developer } = Astro.params;
-
-const displayName = developer.charAt(0).toUpperCase() + developer.slice(1);
+const data = getDeveloperData(developer, "es");
+const displayName = data?.hero.name ?? developer.charAt(0).toUpperCase() + developer.slice(1);
 ---
 
 <PortfolioLayout developer={developer} title={`${displayName} — Portfolio`} lang="es">
-  <HeroSection name={displayName} lang="es" />
-  <SkillsSection lang="es" />
-  <ExperienceSection lang="es" />
-  <ProjectsSection lang="es" />
-  <StackSection lang="es" />
+  <HeroSection
+    name={data?.hero.name}
+    role={data?.hero.role}
+    bio={data?.hero.bio}
+    avatarUrl={data?.hero.avatarUrl}
+    links={data?.hero.links}
+    lang="es"
+  />
+  <SkillsSection skills={data?.skills} />
+  <ExperienceSection experiences={data?.experiences} lang="es" />
+  <ProjectsSection projects={data?.projects} lang="es" />
+  <StackSection stack={data?.stack} lang="es" />
   <ChatWidget client:idle scope={developer} lang="es" />
 </PortfolioLayout>
