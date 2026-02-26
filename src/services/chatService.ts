@@ -1,6 +1,11 @@
-import type { NdjsonChunk, UsageInfo } from "../types/chat";
+import type {
+  NdjsonChunk,
+  UsageInfo,
+  ConversationHistory,
+} from "../types/chat";
 
-const API_BASE = import.meta.env.PUBLIC_API_URL ?? "http://localhost:8000";
+const API_BASE = import.meta.env.API_URL ?? "http://localhost:8000";
+const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
 
 export interface StreamCallbacks {
   onToken: (token: string) => void;
@@ -13,7 +18,7 @@ export async function sendMessage(
   message: string,
   scope: string,
   callbacks: StreamCallbacks,
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ): Promise<void> {
   try {
     const response = await fetch(`${API_BASE}/chat`, {
@@ -24,14 +29,10 @@ export async function sendMessage(
       signal,
     });
 
-    const used = parseInt(response.headers.get("X-Messages-Used") ?? "0", 10);
-    const limit = parseInt(response.headers.get("X-Messages-Limit") ?? "10", 10);
-    const resetAt = response.headers.get("X-Reset-At") ?? "";
-
-    callbacks.onUsage({ used, limit, resetAt });
-
     if (response.status === 429) {
-      callbacks.onError("Has alcanzado el límite diario de mensajes. Vuelve mañana.");
+      callbacks.onError(
+        "Has alcanzado el límite diario de mensajes. Vuelve mañana.",
+      );
       return;
     }
 
@@ -66,7 +67,9 @@ export async function sendMessage(
           if (chunk.type === "token") {
             callbacks.onToken(chunk.data);
           } else if (chunk.type === "done") {
+            console.log("done");
             callbacks.onDone();
+            break;
           }
         } catch {
           // Skip malformed lines
@@ -90,5 +93,53 @@ export async function deleteConversation(scope: string): Promise<boolean> {
     return response.ok;
   } catch {
     return false;
+  }
+}
+
+export async function getUsageStats(scope: string): Promise<UsageInfo> {
+  try {
+    const response = await fetch(`${API_BASE}/chat/usage-stats`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ scope }),
+    });
+
+    const data = await response.json();
+
+    return {
+      used: parseInt(data.used, 10),
+      limit: parseInt(data.limit, 10),
+      resetAt: new Date(data.reset_at).toISOString(),
+    };
+  } catch (error) {
+    return {
+      used: MAX_MESSAGES_PER_DAY,
+      limit: MAX_MESSAGES_PER_DAY,
+      resetAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+    };
+  }
+}
+
+export async function getConversationHistory(
+  scope: string,
+): Promise<ConversationHistory | null> {
+  try {
+    const response = await fetch(`${API_BASE}/chat/history`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ scope }),
+    });
+
+    const data = await response.json();
+
+    return {
+      id: data.id,
+      messages: data.messages,
+      createdAt: data.created_at,
+    };
+  } catch (error) {
+    return null;
   }
 }

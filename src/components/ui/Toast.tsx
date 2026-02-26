@@ -18,6 +18,12 @@ export function useToast() {
   return ctx;
 }
 
+const toastStyles: Record<ToastItem["type"], string> = {
+  success: "border-emerald-500/30 bg-th-success-soft text-th-success",
+  error: "border-red-500/30 bg-th-error-soft text-th-error",
+  info: "border-primary-500/30 bg-th-primary-soft text-th-primary",
+};
+
 function ToastNotification({ toast, onRemove }: { toast: ToastItem; onRemove: (id: string) => void }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,15 +36,9 @@ function ToastNotification({ toast, onRemove }: { toast: ToastItem; onRemove: (i
     return () => clearTimeout(timer);
   }, [toast.id, onRemove]);
 
-  const bgColor = {
-    success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300 light:bg-emerald-50 light:text-emerald-700 light:border-emerald-300/40",
-    error: "border-red-500/30 bg-red-500/10 text-red-300 light:bg-red-50 light:text-red-700 light:border-red-300/40",
-    info: "border-primary-500/30 bg-primary-500/10 text-primary-300 light:bg-primary-50 light:text-primary-700 light:border-primary-300/40",
-  };
-
   return (
     <div
-      className={`flex items-center gap-3 rounded-lg border px-4 py-3 text-sm shadow-lg backdrop-blur-sm transition-all duration-300 ${bgColor[toast.type]} ${
+      className={`flex items-center gap-3 rounded-lg border px-4 py-3 text-sm shadow-lg backdrop-blur-sm transition-all duration-300 ${toastStyles[toast.type]} ${
         isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
       }`}
     >

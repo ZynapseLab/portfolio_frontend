@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ────────────────────────────────────────────────────────────
+   RAW COLOR SCALES
+   Available for decorative/gradient use (static across themes)
+   ──────────────────────────────────────────────────────────── */
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -39,6 +44,126 @@
   --color-surface-950: #020617;
 }
 
+/* ────────────────────────────────────────────────────────────
+   SEMANTIC TOKENS (theme-aware)
+   These resolve to different values based on .dark / .light
+   ──────────────────────────────────────────────────────────── */
+
+@theme inline {
+  /* Backgrounds */
+  --color-th-bg: var(--th-bg);
+  --color-th-bg-card: var(--th-bg-card);
+  --color-th-bg-subtle: var(--th-bg-subtle);
+  --color-th-bg-nav: var(--th-bg-nav);
+  --color-th-bg-section: var(--th-bg-section);
+
+  /* Text */
+  --color-th-text: var(--th-text);
+  --color-th-text-strong: var(--th-text-strong);
+  --color-th-text-sub: var(--th-text-sub);
+  --color-th-text-muted: var(--th-text-muted);
+  --color-th-text-faint: var(--th-text-faint);
+
+  /* Primary / Accent (theme-adapted) */
+  --color-th-primary: var(--th-primary);
+  --color-th-primary-hover: var(--th-primary-hover);
+  --color-th-accent: var(--th-accent);
+  --color-th-primary-soft: var(--th-primary-soft);
+  --color-th-accent-soft: var(--th-accent-soft);
+  --color-th-primary-subtle: var(--th-primary-subtle);
+  --color-th-accent-subtle: var(--th-accent-subtle);
+
+  /* Borders & rings */
+  --color-th-border: var(--th-border);
+  --color-th-border-strong: var(--th-border-strong);
+  --color-th-ring: var(--th-ring);
+
+  /* Interactive / skeleton */
+  --color-th-hover: var(--th-hover);
+  --color-th-skeleton: var(--th-skeleton);
+
+  /* Status */
+  --color-th-error: var(--th-error);
+  --color-th-error-soft: var(--th-error-soft);
+  --color-th-success: var(--th-success);
+  --color-th-success-soft: var(--th-success-soft);
+
+  /* Chat overlay */
+  --color-th-chat-surface: var(--th-chat-surface);
+  --color-th-chat-border: var(--th-chat-border);
+}
+
+/* ────────────────────────────────────────────────────────────
+   DARK PALETTE
+   ──────────────────────────────────────────────────────────── */
+
+   @layer base {
+    .dark {
+      --th-bg:             #020617;
+      --th-bg-card:        rgba(13, 27, 56, 0.6);
+      --th-bg-subtle:      rgba(30, 58, 95, 0.5);
+      --th-bg-nav:         rgba(2, 6, 23, 0.85);
+      --th-bg-section:     rgba(13, 27, 56, 0.3);
+      --th-text:           #a5f3fc;
+      --th-text-strong:    #e0f2fe;
+      --th-text-sub:       #7dd3fc;
+      --th-text-muted:     #38bdf8;
+      --th-text-faint:     #0369a1;
+      --th-primary:        #06b6d4;
+      --th-primary-hover:  #22d3ee;
+      --th-accent:         #818cf8;
+      --th-primary-soft:   rgba(6, 182, 212, 0.1);
+      --th-accent-soft:    rgba(129, 140, 248, 0.1);
+      --th-primary-subtle: rgba(6, 182, 212, 0.2);
+      --th-accent-subtle:  rgba(129, 140, 248, 0.2);
+      --th-border:         rgba(30, 90, 160, 0.4);
+      --th-border-strong:  #1e3a5f;
+      --th-ring:           #0d1b38;
+      --th-hover:          #0d1b38;
+      --th-skeleton:       #0d1b38;
+      --th-error:          #f87171;
+      --th-error-soft:     rgba(239, 68, 68, 0.1);
+      --th-success:        #34d399;
+      --th-success-soft:   rgba(16, 185, 129, 0.1);
+      --th-chat-surface:   rgba(2, 6, 23, 0.92);
+      --th-chat-border:    rgba(255, 255, 255, 0.08);
+    }
+    .light {
+      --th-bg:             #f0f9ff;
+      --th-bg-card:        #ffffff;
+      --th-bg-subtle:      #e0f2fe;
+      --th-bg-nav:         rgba(240, 249, 255, 0.9);
+      --th-bg-section:     rgba(224, 242, 254, 0.5);
+      --th-text:           #0c4a6e;
+      --th-text-strong:    #082f49;
+      --th-text-sub:       #0369a1;
+      --th-text-muted:     #0284c7;
+      --th-text-faint:     #64748b;
+      --th-primary:        #0284c7;
+      --th-primary-hover:  #0369a1;
+      --th-accent:         #6366f1;
+      --th-primary-soft:   #e0f2fe;
+      --th-accent-soft:    #eef2ff;
+      --th-primary-subtle: #bae6fd;
+      --th-accent-subtle:  #e0e7ff;
+      --th-border:         #bae6fd;
+      --th-border-strong:  #7dd3fc;
+      --th-ring:           #e0f2fe;
+      --th-hover:          #e0f2fe;
+      --th-skeleton:       #e0f2fe;
+      --th-error:          #dc2626;
+      --th-error-soft:     #fef2f2;
+      --th-success:        #059669;
+      --th-success-soft:   #ecfdf5;
+      --th-chat-surface:   rgba(255, 255, 255, 0.95);
+      --th-chat-border:    rgba(0, 0, 0, 0.1);
+    }
+  }
+
+/* ────────────────────────────────────────────────────────────
+   BASE STYLES
+   ──────────────────────────────────────────────────────────── */
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -48,12 +173,101 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-surface-950);
-    color: var(--color-surface-100);
+    background-color: var(--th-bg);
+    color: var(--th-text);
   }
+}
 
-  html.light body {
-    background-color: var(--color-surface-50);
-    color: var(--color-surface-900);
-  }
+/* ────────────────────────────────────────────────────────────
+   CHAT MARKDOWN STYLES
+   ──────────────────────────────────────────────────────────── */
+
+.chat-markdown p {
+  margin-bottom: 0.5em;
+}
+.chat-markdown p:last-child {
+  margin-bottom: 0;
+}
+.chat-markdown strong {
+  font-weight: 700;
+}
+.chat-markdown em {
+  font-style: italic;
+}
+.chat-markdown a {
+  color: var(--th-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.chat-markdown a:hover {
+  color: var(--th-primary-hover);
+}
+.chat-markdown ul,
+.chat-markdown ol {
+  margin: 0.4em 0;
+  padding-left: 1.4em;
+}
+.chat-markdown ul {
+  list-style-type: disc;
+}
+.chat-markdown ol {
+  list-style-type: decimal;
+}
+.chat-markdown li {
+  margin-bottom: 0.2em;
+}
+.chat-markdown code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 0.15em 0.35em;
+  border-radius: 0.25rem;
+}
+.chat-markdown pre {
+  margin: 0.5em 0;
+  padding: 0.6em 0.8em;
+  border-radius: 0.375rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  overflow-x: auto;
+}
+.chat-markdown pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.8em;
+}
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3 {
+  font-weight: 700;
+  margin-top: 0.6em;
+  margin-bottom: 0.3em;
+}
+.chat-markdown h1 { font-size: 1.15em; }
+.chat-markdown h2 { font-size: 1.05em; }
+.chat-markdown h3 { font-size: 1em; }
+.chat-markdown blockquote {
+  border-left: 3px solid var(--th-primary);
+  padding-left: 0.75em;
+  margin: 0.5em 0;
+  opacity: 0.85;
+}
+
+/* ────────────────────────────────────────────────────────────
+   CHAT OVERLAY ANIMATIONS
+   ──────────────────────────────────────────────────────────── */
+
+.chat-overlay {
+  pointer-events: none;
+}
+
+.chat-overlay--open {
+  pointer-events: auto;
+}
+
+.chat-overlay--closed {
+  pointer-events: auto;
+}
+
+.chat-panel {
+  will-change: transform, opacity;
 }

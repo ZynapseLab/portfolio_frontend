@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import { getActiveTheme, toggleTheme, type Theme } from "../../services/themeService";
+import { useTranslations } from "../../i18n/utils";
+import type { Lang } from "../../i18n/utils";
 
-export default function ThemeToggle() {
+interface Props {
+  lang?: Lang;
+}
+
+export default function ThemeToggle({ lang = "es" }: Props) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations(lang);
 
   useEffect(() => {
     setTheme(getActiveTheme());
@@ -17,15 +24,15 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="h-9 w-9 rounded-lg bg-surface-800/50 light:bg-surface-200/50" />
+      <div className="h-9 w-9 rounded-lg bg-th-bg-subtle" />
     );
   }
 
   return (
     <button
       onClick={handleToggle}
-      className="flex h-9 w-9 items-center justify-center rounded-lg text-surface-400 transition-colors hover:bg-surface-800 hover:text-surface-200 light:hover:bg-surface-200 light:hover:text-surface-700"
-      aria-label={`Cambiar a modo ${theme === "dark" ? "claro" : "oscuro"}`}
+      className="flex h-9 w-9 items-center justify-center rounded-lg text-th-text-muted transition-colors hover:bg-th-hover hover:text-th-text-strong"
+      aria-label={`${t("theme.switchTo")} ${theme === "dark" ? t("theme.light") : t("theme.dark")}`}
     >
       {theme === "dark" ? (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -1,4 +1,6 @@
 ---
+import { useTranslations, type Lang } from "../../i18n/utils";
+
 interface TechItem {
   name: string;
   iconUrl?: string;
@@ -11,43 +13,45 @@ interface StackCategory {
 
 interface Props {
   stack?: StackCategory[];
+  lang?: Lang;
 }
 
-const { stack = [] } = Astro.props;
+const { stack = [], lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section>
-  <h2 class="text-2xl font-bold text-surface-100 light:text-surface-900">
-    Stack Tecnológico
+  <h2 class="text-2xl font-bold text-th-text">
+    {t("portfolio.stack")}
   </h2>
   <div class="mt-1 h-1 w-12 rounded-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
 
   <div class="mt-8 space-y-8">
     {(stack.length > 0 ? stack : [
-      { category: "Lenguajes", items: Array.from({ length: 4 }, () => ({ name: "" })) },
-      { category: "Frameworks", items: Array.from({ length: 4 }, () => ({ name: "" })) },
-      { category: "Herramientas", items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.languages"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.frameworks"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
+      { category: t("portfolio.stack.tools"), items: Array.from({ length: 4 }, () => ({ name: "" })) },
     ]).map((group) => (
       <div>
-        <h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-surface-500 light:text-surface-400">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-th-text-faint">
           {group.category}
         </h3>
         <div class="flex flex-wrap gap-3">
           {group.items.map((item) => (
-            <div class="flex items-center gap-2.5 rounded-xl border border-surface-800/60 bg-surface-900/40 px-4 py-2.5 transition-all hover:border-surface-700 light:border-surface-200 light:bg-white light:hover:border-surface-300">
+            <div class="flex items-center gap-2.5 rounded-xl border border-th-border bg-th-bg-card px-4 py-2.5 transition-all hover:border-th-border-strong">
               {item.iconUrl ? (
                 <img src={item.iconUrl} alt={item.name} class="h-5 w-5" />
               ) : (
-                <div class="flex h-5 w-5 items-center justify-center rounded bg-accent-500/10 text-[10px] font-bold text-accent-400 light:bg-accent-50 light:text-accent-600">
+                <div class="flex h-5 w-5 items-center justify-center rounded bg-th-accent-soft text-[10px] font-bold text-th-accent">
                   {item.name ? item.name[0] : "?"}
                 </div>
               )}
               {item.name ? (
-                <span class="text-sm font-medium text-surface-200 light:text-surface-700">
+                <span class="text-sm font-medium text-th-text-strong">
                   {item.name}
                 </span>
               ) : (
-                <div class="h-4 w-16 rounded bg-surface-800 light:bg-surface-200"></div>
+                <div class="h-4 w-16 rounded bg-th-skeleton"></div>
               )}
             </div>
           ))}

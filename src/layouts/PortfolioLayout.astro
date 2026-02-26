@@ -1,21 +1,24 @@
 ---
 import MainLayout from "./MainLayout.astro";
+import { useTranslations, getLocalePath, type Lang } from "../i18n/utils";
 
 interface Props {
   developer: string;
   title: string;
+  lang?: Lang;
 }
 
-const { developer, title } = Astro.props;
+const { developer, title, lang = "es" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<MainLayout title={title}>
+<MainLayout title={title} lang={lang}>
   <Fragment slot="nav-actions">
     <a
-      href="/"
-      class="text-sm text-surface-400 hover:text-primary-400 transition-colors light:text-surface-500 light:hover:text-primary-600"
+      href={getLocalePath("/", lang)}
+      class="text-sm text-th-text-muted hover:text-th-primary transition-colors"
     >
-      &larr; Volver al inicio
+      &larr; {t("nav.backToHome")}
     </a>
   </Fragment>
 

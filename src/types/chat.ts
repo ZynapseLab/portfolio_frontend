@@ -1,3 +1,5 @@
+import { onPageLoad } from "astro/virtual-modules/transitions-events.js";
+
 export type Scope = "global" | string;
 
 export interface ChatMessage {
@@ -5,6 +7,12 @@ export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   timestamp: number;
+}
+
+export interface ConversationHistory {
+  id: string;
+  messages: ChatMessage[];
+  createdAt: string;
 }
 
 export interface UsageInfo {
@@ -22,7 +30,16 @@ export interface NdjsonDoneChunk {
   type: "done";
 }
 
-export type NdjsonChunk = NdjsonTokenChunk | NdjsonDoneChunk;
+export interface NdjsonUsageChunk {
+  type: "usage";
+  data: {
+    used: number;
+    limit: number;
+    reset_at: string;
+  };
+}
+
+export type NdjsonChunk = NdjsonTokenChunk | NdjsonDoneChunk | NdjsonUsageChunk;
 
 export interface ChatState {
   messages: ChatMessage[];
