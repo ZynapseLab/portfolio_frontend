@@ -4,8 +4,10 @@ import type {
   ConversationHistory,
 } from "../types/chat";
 
-const API_BASE = import.meta.env.API_URL ?? "http://localhost:8000";
-const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
+console.log("API_BASE:", import.meta.env.PUBLIC_APP_API_URL);
+
+const API_BASE = import.meta.env.PUBLIC_APP_API_URL ?? "http://localhost:8000";
+const MAX_MESSAGES_PER_DAY = import.meta.env.PUBLIC_APP_MAX_MESSAGES_PER_DAY ?? 10;
 
 export interface StreamCallbacks {
   onToken: (token: string) => void;
