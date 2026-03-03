@@ -125,7 +125,7 @@
       --th-error-soft:     rgba(239, 68, 68, 0.1);
       --th-success:        #34d399;
       --th-success-soft:   rgba(16, 185, 129, 0.1);
-      --th-chat-surface:   rgba(2, 6, 23, 0.92);
+      --th-chat-surface:   rgba(2, 6, 23, 0.77);
       --th-chat-border:    rgba(255, 255, 255, 0.08);
     }
     .light {
@@ -155,7 +155,7 @@
       --th-error-soft:     #fef2f2;
       --th-success:        #059669;
       --th-success-soft:   #ecfdf5;
-      --th-chat-surface:   rgba(255, 255, 255, 0.95);
+      --th-chat-surface:   rgba(255, 255, 255, 0.80);
       --th-chat-border:    rgba(0, 0, 0, 0.1);
     }
   }
@@ -250,6 +250,56 @@
   padding-left: 0.75em;
   margin: 0.5em 0;
   opacity: 0.85;
+}
+.chat-markdown hr {
+  border: none;
+  border-top: 1px solid var(--th-border);
+  margin: 0.75em 0;
+}
+.chat-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.6em 0;
+  font-size: 0.85em;
+}
+.chat-markdown th,
+.chat-markdown td {
+  border: 1px solid var(--th-border);
+  padding: 0.4em 0.65em;
+  text-align: left;
+}
+.chat-markdown th {
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.light .chat-markdown th {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.chat-markdown tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.light .chat-markdown tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.chat-markdown br {
+  content: "";
+  display: block;
+  margin-top: 0.35em;
+}
+
+/* Streaming cursor */
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 1px;
+  background-color: currentColor;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* ────────────────────────────────────────────────────────────

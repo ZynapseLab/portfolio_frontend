@@ -8,6 +8,23 @@ marked.setOptions({
   gfm: true,
 });
 
+const CURSOR_HTML = '<span class="streaming-cursor"></span>';
+
+const TEXT_TAGS = ["p", "li", "td", "th", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote"];
+
+function injectCursor(html: string): string {
+  let bestPos = -1;
+  for (const tag of TEXT_TAGS) {
+    const needle = `</${tag}>`;
+    const pos = html.lastIndexOf(needle);
+    if (pos > bestPos) bestPos = pos;
+  }
+  if (bestPos > -1) {
+    return html.slice(0, bestPos) + CURSOR_HTML + html.slice(bestPos);
+  }
+  return html + CURSOR_HTML;
+}
+
 interface Props {
   message: ChatMessageType;
   isStreaming?: boolean;
@@ -19,8 +36,9 @@ export default function ChatMessage({ message, isStreaming = false }: Props) {
   const htmlContent = useMemo(() => {
     if (isUser) return "";
     const raw = marked.parse(message.content, { async: false }) as string;
-    return DOMPurify.sanitize(raw);
-  }, [message.content, isUser]);
+    const clean = DOMPurify.sanitize(raw);
+    return isStreaming ? injectCursor(clean) : clean;
+  }, [message.content, isUser, isStreaming]);
 
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
@@ -34,12 +52,10 @@ export default function ChatMessage({ message, isStreaming = false }: Props) {
         {isUser ? (
           <p className="whitespace-pre-wrap break-words">{message.content}</p>
         ) : (
-          <div className="chat-markdown break-words">
-            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-            {isStreaming && (
-              <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-current align-middle" />
-            )}
-          </div>
+          <div
+            className="chat-markdown break-words"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
         )}
       </div>
     </div>
