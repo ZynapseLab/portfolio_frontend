@@ -4,8 +4,6 @@ import type {
   ConversationHistory,
 } from "../types/chat";
 
-console.log("API_BASE:", import.meta.env.PUBLIC_APP_API_URL);
-
 const API_BASE = import.meta.env.PUBLIC_APP_API_URL ?? "http://localhost:8000";
 const MAX_MESSAGES_PER_DAY =
   import.meta.env.PUBLIC_APP_MAX_MESSAGES_PER_DAY ?? 10;
@@ -57,8 +55,6 @@ export async function sendMessage(
       const { done, value } = await reader.read();
       if (done) break;
 
-      console.log(value);
-
       buffer += decoder.decode(value, { stream: true });
       const lines = buffer.split("\n");
       buffer = lines.pop() ?? "";
@@ -72,7 +68,6 @@ export async function sendMessage(
           if (chunk.type === "token") {
             callbacks.onToken(chunk.data);
           } else if (chunk.type === "done") {
-            console.log("done");
             callbacks.onDone();
             break;
           }
