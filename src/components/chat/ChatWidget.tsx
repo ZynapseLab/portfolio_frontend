@@ -9,6 +9,7 @@ import ChatInput from "./ChatInput";
 import SuggestionList from "./SuggestionList";
 import UsageBar from "./UsageBar";
 import TypingIndicator from "./TypingIndicator";
+import ContactModal from "../contact/ContactModal";
 
 const MAX_MESSAGES_PER_DAY = import.meta.env.MAX_MESSAGES_PER_DAY ?? 10;
 
@@ -20,6 +21,7 @@ interface Props {
 function ChatWidgetInner({ scope, lang = "es" }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
@@ -29,8 +31,17 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const hasShownContactPrompt = useRef(false);
   const { addToast } = useToast();
   const t = useTranslations(lang);
+
+  // Restore contact prompt state from sessionStorage
+  useEffect(() => {
+    const key = `contactPromptShown_${scope}`;
+    if (sessionStorage.getItem(key) === "true") {
+      hasShownContactPrompt.current = true;
+    }
+  }, [scope]);
 
   const scrollToBottom = useCallback(() => {
     requestAnimationFrame(() => {
@@ -99,6 +110,8 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
     async (text: string) => {
       if (isStreaming || isLimitReached) return;
 
+      const isFirstMessage = messages.length === 0;
+
       const userMsg: ChatMessageType = {
         id: crypto.randomUUID(),
         role: "user",
@@ -142,6 +155,14 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
             });
             setIsStreaming(false);
             setIsWaiting(false);
+
+            if (isFirstMessage && !hasShownContactPrompt.current) {
+              hasShownContactPrompt.current = true;
+              sessionStorage.setItem(`contactPromptShown_${scope}`, "true");
+              setTimeout(() => {
+                addToast(t("chat.contactPrompt"), "info");
+              }, 1500);
+            }
           },
           onUsage: (info) => {
             if (info.used >= info.limit) {
@@ -175,22 +196,44 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
 
   return (
     <>
-      {/* Floating toggle button — centered bottom */}
-      {!isOpen && (
-        <button
-          onClick={handleOpen}
-          className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 py-3 pl-4 pr-5 text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/40 hover:scale-105 active:scale-95"
-          aria-label={t("chat.ariaOpen")}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          <span className="hidden text-sm font-medium sm:inline">Chat IA</span>
-        </button>
+      {/* Floating buttons — centered bottom */}
+      {!isOpen && !contactOpen && (
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 flex items-center gap-3">
+          {/* Email button */}
+          <button
+            onClick={() => setContactOpen(true)}
+            className="flex items-center gap-2 rounded-full border border-th-border bg-th-bg-card py-3 pl-4 pr-5 text-th-text-sub shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95"
+            aria-label={t("contact.ariaOpen")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <span className="hidden text-sm font-medium sm:inline">Email</span>
+          </button>
+
+          {/* Chat IA button */}
+          <button
+            onClick={handleOpen}
+            className="flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 py-3 pl-4 pr-5 text-white shadow-lg shadow-primary-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/40 hover:scale-105 active:scale-95"
+            aria-label={t("chat.ariaOpen")}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span className="hidden text-sm font-medium sm:inline">Chat IA</span>
+          </button>
+        </div>
       )}
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={contactOpen}
+        onClose={() => setContactOpen(false)}
+        lang={lang}
+      />
 
       {/* Full-screen overlay */}
       {isOpen && (
@@ -201,9 +244,11 @@ function ChatWidgetInner({ scope, lang = "es" }: Props) {
         >
           {/* Backdrop */}
           <div
-            className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-              isAnimating ? "opacity-75" : "opacity-0"
-            }`}
+            className="absolute inset-0 backdrop-blur-xs transition-opacity duration-300"
+            style={{
+              backgroundColor: "var(--th-backdrop)",
+              opacity: isAnimating ? "var(--th-backdrop-opacity)" : 0,
+            }}
             onClick={handleClose}
           />
 
