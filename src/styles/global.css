@@ -127,6 +127,8 @@
       --th-success-soft:   rgba(16, 185, 129, 0.1);
       --th-chat-surface:   rgba(2, 6, 23, 0.77);
       --th-chat-border:    rgba(255, 255, 255, 0.08);
+      --th-backdrop:       rgba(0, 0, 0, 0.75);
+      --th-backdrop-opacity: 0.95;
     }
     .light {
       --th-bg:             #f0f9ff;
@@ -157,6 +159,8 @@
       --th-success-soft:   #ecfdf5;
       --th-chat-surface:   rgba(255, 255, 255, 0.80);
       --th-chat-border:    rgba(0, 0, 0, 0.1);
+      --th-backdrop:       rgba(0, 0, 0, 0.50);
+      --th-backdrop-opacity: 0.75;
     }
   }
 

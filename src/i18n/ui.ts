@@ -107,6 +107,28 @@ export const ui = {
     "suggestions.developer.3": "¿Con qué tecnologías trabajas?",
     "suggestions.developer.4": "Cuéntame sobre tu experiencia",
 
+    // Contact Modal
+    "contact.ariaOpen": "Enviar email",
+    "contact.title": "Contacto por email",
+    "contact.name": "Nombre",
+    "contact.namePlaceholder": "Tu nombre",
+    "contact.email": "Email",
+    "contact.emailPlaceholder": "tu@email.com",
+    "contact.subject": "Asunto",
+    "contact.subjectPlaceholder": "Asunto del mensaje",
+    "contact.message": "Mensaje",
+    "contact.messagePlaceholder": "Escribe tu mensaje...",
+    "contact.country": "Pais detectado",
+    "contact.send": "Enviar",
+    "contact.sending": "Enviando...",
+    "contact.success": "Mensaje enviado correctamente.",
+    "contact.error": "No se pudo enviar el mensaje. Intenta de nuevo.",
+    "contact.validationRequired": "Todos los campos son obligatorios.",
+    "contact.validationEmail": "Introduce un email valido.",
+
+    // Contact Prompt (post-chat)
+    "chat.contactPrompt": "Necesitas una respuesta personalizada? Envianos un email!",
+
     // Theme Toggle
     "theme.switchTo": "Cambiar a modo",
     "theme.light": "claro",
@@ -211,6 +233,28 @@ export const ui = {
     "suggestions.developer.2": "What AI projects have you developed?",
     "suggestions.developer.3": "What technologies do you work with?",
     "suggestions.developer.4": "Tell me about your experience",
+
+    // Contact Modal
+    "contact.ariaOpen": "Send email",
+    "contact.title": "Contact by email",
+    "contact.name": "Name",
+    "contact.namePlaceholder": "Your name",
+    "contact.email": "Email",
+    "contact.emailPlaceholder": "you@email.com",
+    "contact.subject": "Subject",
+    "contact.subjectPlaceholder": "Message subject",
+    "contact.message": "Message",
+    "contact.messagePlaceholder": "Write your message...",
+    "contact.country": "Detected country",
+    "contact.send": "Send",
+    "contact.sending": "Sending...",
+    "contact.success": "Message sent successfully.",
+    "contact.error": "Could not send the message. Try again.",
+    "contact.validationRequired": "All fields are required.",
+    "contact.validationEmail": "Enter a valid email.",
+
+    // Contact Prompt (post-chat)
+    "chat.contactPrompt": "Need a personalized answer? Send us an email!",
 
     // Theme Toggle
     "theme.switchTo": "Switch to",
