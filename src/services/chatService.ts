@@ -84,7 +84,7 @@ export async function sendMessage(
 
 export async function deleteConversation(scope: string): Promise<boolean> {
   try {
-    const response = await fetch(`${API_BASE}/conversation`, {
+    const response = await fetch(`${API_BASE}/conversation?scope=${scope}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
