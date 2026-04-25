@@ -1,67 +1,126 @@
 {
   "hero": {
     "name": "Pablo González",
-    "role": { "es": "Ingeniero de Software", "en": "Software Engineer" },
+    "role": {
+      "es": "Ingeniero de Software",
+      "en": "Software Engineer"
+    },
     "bio": {
       "es": "Ingeniero de Software apasionado por la resolución de problemas complejos y el desarrollo de soluciones escalables que impactan al negocio. Sólida base en estructuras de datos y algoritmos, con experiencia práctica en el ciclo de vida completo del desarrollo de software.",
       "en": "Passionate Software Engineer committed to solving complex problems and building scalable solutions that meet both user and business needs. Strong foundation in data structures and algorithms, with hands-on experience across the full software development lifecycle."
     },
-    "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQE6Z9o9pt-6EQ/profile-displayphoto-crop_800_800/B4EZuzTa2nKQAM-/0/1768239771693?e=1773878400&v=beta&t=cyfybrnwJld15CGkpSaW94cJQgzRJnXj8tcb98mSCZw",
+    "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQE6Z9o9pt-6EQ/profile-displayphoto-scale_100_100/B4EZuzTa2nKQAg-/0/1768239771785?e=1778716800&v=beta&t=B_07dxTaLoszCgcGZK6706OF315TWt_ZftWx9t98UOU",
     "links": [
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/jpablo-gonz%C3%A1lez/" },
-      { "label": "GitHub", "url": "https://github.com/PabloGoProg" }
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/jpablo-gonz%C3%A1lez/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/PabloGoProg"
+      }
     ]
   },
   "experiences": [
     {
       "company": "VCSOFT",
-      "role": { "es": "Desarrollador Cloud - Equipo de IA", "en": "Cloud Developer - AI Team" },
-      "period": { "es": "2025 - Presente", "en": "2025 - Present" },
+      "role": {
+        "es": "Desarrollador Cloud - Equipo de IA",
+        "en": "Cloud Developer - AI Team"
+      },
+      "period": {
+        "es": "2025 - Presente",
+        "en": "2025 - Present"
+      },
       "description": {
         "es": "Desarrollo de productos basados en IA Agéntica para soportar el SDLC. Migraciones en aplicaciones legacy. Construcción de arquitecturas agénticas y gestión de estados y contextos para flujos de trabajo agénticos.",
         "en": "Developing Agentic AI-based products to support the SDLC. Migrations on legacy applications. Building Agentic architectures and managing states and contexts for Agentic Workflows."
       },
-      "tags": ["LangGraph", "Agentic AI", "Cloud", "SDLC"]
+      "tags": [
+        "LangGraph",
+        "Agentic AI",
+        "Cloud",
+        "SDLC"
+      ]
     },
     {
       "company": "CHEC - EPM Group",
-      "role": { "es": "Desarrollador de Software", "en": "Software Developer" },
-      "period": { "es": "2024", "en": "2024" },
+      "role": {
+        "es": "Desarrollador de Software",
+        "en": "Software Developer"
+      },
+      "period": {
+        "es": "2024",
+        "en": "2024"
+      },
       "description": {
         "es": "Soluciones de medición inteligente en el sector energético.",
         "en": "Smart metering solutions in the energy sector."
       },
-      "tags": ["Energy", "Smart Metering"]
+      "tags": [
+        "Energy",
+        "Smart Metering"
+      ]
     },
     {
       "company": "CognitiVital",
-      "role": { "es": "Desarrollador de Software", "en": "Software Developer" },
-      "period": { "es": "2023 - 2024", "en": "2023 - 2024" },
+      "role": {
+        "es": "Desarrollador de Software",
+        "en": "Software Developer"
+      },
+      "period": {
+        "es": "2023 - 2024",
+        "en": "2023 - 2024"
+      },
       "description": {
         "es": "Algoritmos evolutivos para personalizar planes de entrenamiento mediante microservicios.",
         "en": "Evolutionary algorithms for personalizing training plans via microservices."
       },
-      "tags": ["Microservices", "Algorithms", "Python"]
+      "tags": [
+        "Microservices",
+        "Algorithms",
+        "Python"
+      ]
     },
     {
       "company": "Universidad Autónoma de Manizales",
-      "role": { "es": "Desarrollador Fullstack", "en": "Fullstack Developer" },
-      "period": { "es": "2023", "en": "2023" },
+      "role": {
+        "es": "Desarrollador Fullstack",
+        "en": "Fullstack Developer"
+      },
+      "period": {
+        "es": "2023",
+        "en": "2023"
+      },
       "description": {
         "es": "Aplicación fullstack para la gestión de certificaciones digitales.",
         "en": "Full-stack application for digital certification management."
       },
-      "tags": ["Fullstack", "React", "Node.js"]
+      "tags": [
+        "Fullstack",
+        "React",
+        "Node.js"
+      ]
     },
     {
       "company": "Universidad Autónoma de Manizales",
-      "role": { "es": "Asistente de Enseñanza", "en": "Teaching Assistant" },
-      "period": { "es": "2022 - 2023", "en": "2022 - 2023" },
+      "role": {
+        "es": "Asistente de Enseñanza",
+        "en": "Teaching Assistant"
+      },
+      "period": {
+        "es": "2022 - 2023",
+        "en": "2022 - 2023"
+      },
       "description": {
         "es": "Rol académico en Lógica y Técnicas de Programación, formando a más de 90 estudiantes.",
         "en": "Academic role in Logic and Programming Techniques, training over 90 students."
       },
-      "tags": ["Teaching", "Programming", "Logic"]
+      "tags": [
+        "Teaching",
+        "Programming",
+        "Logic"
+      ]
     }
   ],
   "projects": [
@@ -74,7 +133,12 @@
         "es": "Profundización en soluciones avanzadas de IA con enfoque en flujos de trabajo agénticos y automatizaciones usando LangGraph, LangChain y LangSmith.",
         "en": "Deepening expertise in advanced AI solutions with focus on Agentic Workflows and automations using LangGraph, LangChain, and LangSmith."
       },
-      "tags": ["LangGraph", "LangChain", "LangSmith", "Agentic AI"]
+      "tags": [
+        "LangGraph",
+        "LangChain",
+        "LangSmith",
+        "Agentic AI"
+      ]
     },
     {
       "title": {
@@ -85,7 +149,11 @@
         "es": "Integración de capacidades RAG y Model Context Protocol (MCP) para crear herramientas que procesan información y ejecutan acciones inteligentes.",
         "en": "Integrating RAG and Model Context Protocol (MCP) capabilities to create tools that process information and execute intelligent actions."
       },
-      "tags": ["RAG", "MCP", "LLMs"]
+      "tags": [
+        "RAG",
+        "MCP",
+        "LLMs"
+      ]
     },
     {
       "title": {
@@ -96,80 +164,299 @@
         "es": "Construcción de sistemas listos para producción que ejecutan acciones inteligentes a través de Tool Calling en entornos de producción.",
         "en": "Building production-ready systems that execute intelligent actions through Tool Calling in production environments."
       },
-      "tags": ["Tool Calling", "AI", "Production"]
+      "tags": [
+        "Tool Calling",
+        "AI",
+        "Production"
+      ]
     }
   ],
   "skills": [
-    { "name": "Python", "level": 5, "category": { "es": "Scripting y Lógica", "en": "Scripting & Logic" } },
-    { "name": "C++", "level": 4, "category": { "es": "Scripting y Lógica", "en": "Scripting & Logic" } },
-    { "name": "TypeScript", "level": 4, "category": { "es": "Scripting y Lógica", "en": "Scripting & Logic" } },
-    { "name": "Go", "level": 3, "category": { "es": "Scripting y Lógica", "en": "Scripting & Logic" } },
-    { "name": "Express", "level": 4, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "FastAPI", "level": 4, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "Laravel", "level": 3, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "AdonisJS", "level": 3, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "Node.js", "level": 4, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "React", "level": 4, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "Vue", "level": 3, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "Astro", "level": 3, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "React Native", "level": 3, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "PostgreSQL", "level": 4, "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" } },
-    { "name": "MySQL", "level": 3, "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" } },
-    { "name": "SQLite", "level": 3, "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" } },
-    { "name": "MongoDB", "level": 3, "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" } },
-    { "name": "PowerBI", "level": 3, "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" } },
-    { "name": "LangGraph", "level": 4, "category": { "es": "Flujos de IA", "en": "AI Workflows" } },
-    { "name": "LangChain", "level": 4, "category": { "es": "Flujos de IA", "en": "AI Workflows" } },
-    { "name": "LangSmith", "level": 3, "category": { "es": "Flujos de IA", "en": "AI Workflows" } },
-    { "name": "RAG", "level": 4, "category": { "es": "Flujos de IA", "en": "AI Workflows" } }
+    {
+      "name": "Python",
+      "level": 5,
+      "category": {
+        "es": "Scripting y Lógica",
+        "en": "Scripting & Logic"
+      }
+    },
+    {
+      "name": "C++",
+      "level": 4,
+      "category": {
+        "es": "Scripting y Lógica",
+        "en": "Scripting & Logic"
+      }
+    },
+    {
+      "name": "TypeScript",
+      "level": 4,
+      "category": {
+        "es": "Scripting y Lógica",
+        "en": "Scripting & Logic"
+      }
+    },
+    {
+      "name": "Go",
+      "level": 3,
+      "category": {
+        "es": "Scripting y Lógica",
+        "en": "Scripting & Logic"
+      }
+    },
+    {
+      "name": "Express",
+      "level": 4,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "FastAPI",
+      "level": 4,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "Laravel",
+      "level": 3,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "AdonisJS",
+      "level": 3,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "Node.js",
+      "level": 4,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "React",
+      "level": 4,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "Vue",
+      "level": 3,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "Astro",
+      "level": 3,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "React Native",
+      "level": 3,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 4,
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      }
+    },
+    {
+      "name": "MySQL",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      }
+    },
+    {
+      "name": "SQLite",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      }
+    },
+    {
+      "name": "MongoDB",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      }
+    },
+    {
+      "name": "PowerBI",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      }
+    },
+    {
+      "name": "LangGraph",
+      "level": 4,
+      "category": {
+        "es": "Flujos de IA",
+        "en": "AI Workflows"
+      }
+    },
+    {
+      "name": "LangChain",
+      "level": 4,
+      "category": {
+        "es": "Flujos de IA",
+        "en": "AI Workflows"
+      }
+    },
+    {
+      "name": "LangSmith",
+      "level": 3,
+      "category": {
+        "es": "Flujos de IA",
+        "en": "AI Workflows"
+      }
+    },
+    {
+      "name": "RAG",
+      "level": 4,
+      "category": {
+        "es": "Flujos de IA",
+        "en": "AI Workflows"
+      }
+    }
   ],
   "stack": [
     {
-      "category": { "es": "Scripting y Lógica", "en": "Scripting & Logic" },
+      "category": {
+        "es": "Scripting y Lógica",
+        "en": "Scripting & Logic"
+      },
       "items": [
-        { "name": "Python" },
-        { "name": "C++" },
-        { "name": "TypeScript" },
-        { "name": "Go" }
+        {
+          "name": "Python"
+        },
+        {
+          "name": "C++"
+        },
+        {
+          "name": "TypeScript"
+        },
+        {
+          "name": "Go"
+        }
       ]
     },
     {
-      "category": { "es": "Backend", "en": "Backend" },
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      },
       "items": [
-        { "name": "Express" },
-        { "name": "FastAPI" },
-        { "name": "Laravel" },
-        { "name": "AdonisJS" },
-        { "name": "Node.js" }
+        {
+          "name": "Express"
+        },
+        {
+          "name": "FastAPI"
+        },
+        {
+          "name": "Laravel"
+        },
+        {
+          "name": "AdonisJS"
+        },
+        {
+          "name": "Node.js"
+        }
       ]
     },
     {
-      "category": { "es": "Frontend", "en": "Frontend" },
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      },
       "items": [
-        { "name": "React" },
-        { "name": "Vue" },
-        { "name": "Astro" },
-        { "name": "React Native" }
+        {
+          "name": "React"
+        },
+        {
+          "name": "Vue"
+        },
+        {
+          "name": "Astro"
+        },
+        {
+          "name": "React Native"
+        }
       ]
     },
     {
-      "category": { "es": "Bases de Datos y BI", "en": "Databases & BI" },
+      "category": {
+        "es": "Bases de Datos y BI",
+        "en": "Databases & BI"
+      },
       "items": [
-        { "name": "PostgreSQL" },
-        { "name": "MySQL" },
-        { "name": "SQLite" },
-        { "name": "MongoDB" },
-        { "name": "PowerBI" }
+        {
+          "name": "PostgreSQL"
+        },
+        {
+          "name": "MySQL"
+        },
+        {
+          "name": "SQLite"
+        },
+        {
+          "name": "MongoDB"
+        },
+        {
+          "name": "PowerBI"
+        }
       ]
     },
     {
-      "category": { "es": "Flujos de IA", "en": "AI Workflows" },
+      "category": {
+        "es": "Flujos de IA",
+        "en": "AI Workflows"
+      },
       "items": [
-        { "name": "LangGraph" },
-        { "name": "LangChain" },
-        { "name": "LangSmith" },
-        { "name": "RAG" },
-        { "name": "Agentic Architectures" }
+        {
+          "name": "LangGraph"
+        },
+        {
+          "name": "LangChain"
+        },
+        {
+          "name": "LangSmith"
+        },
+        {
+          "name": "RAG"
+        },
+        {
+          "name": "Agentic Architectures"
+        }
       ]
     }
   ]

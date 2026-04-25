@@ -1,87 +1,165 @@
 {
   "hero": {
     "name": "Jonathan Gómez Sánchez",
-    "role": { "es": "Desarrollador de IA", "en": "AI Developer" },
+    "role": {
+      "es": "Desarrollador de IA",
+      "en": "AI Developer"
+    },
     "bio": {
       "es": "Ingeniero mecatrónico y desarrollador de software especializado en soluciones de inteligencia artificial aplicadas a entornos empresariales. Diseño e implemento arquitecturas basadas en LLMs, flujos de agentes y sistemas RAG, utilizando herramientas como LangGraph, Redis y MongoDB para gestionar memoria persistente, contexto y orquestación de procesos complejos.",
       "en": "Mechatronics engineer and software developer specialized in building AI-driven solutions for enterprise environments. I design and implement architectures based on LLMs, agent workflows, and RAG systems using tools such as LangGraph, Redis, and MongoDB to manage persistent memory, contextual reasoning, and complex process orchestration."
     },
-    "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQHoWXgvQMaRdQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1679584993276?e=1773878400&v=beta&t=p440mUbulFczjsFDcX_uGbbCloWJ1zYA7oB0SBXfsEo",
+    "avatarUrl": "https://media.licdn.com/dms/image/v2/D4E03AQHoWXgvQMaRdQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1679584993276?e=1778716800&v=beta&t=pfRL2_-1pT8mhfCbn6oPSqFi_6L3orw8bSyU0oUzDxg",
     "links": [
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/jonathan-gomez-sanchez-" },
-      { "label": "GitHub", "url": "https://github.com/JonathanG0m3z" }
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/jonathan-gomez-sanchez-"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/JonathanG0m3z"
+      }
     ]
   },
   "experiences": [
     {
       "company": "Vertebra",
-      "role": { "es": "Desarrollador de IA", "en": "AI Developer" },
-      "period": { "es": "May 2025 - Presente", "en": "May 2025 - Present" },
+      "role": {
+        "es": "Desarrollador de IA",
+        "en": "AI Developer"
+      },
+      "period": {
+        "es": "May 2025 - Presente",
+        "en": "May 2025 - Present"
+      },
       "description": {
         "es": "Diseño de soluciones empresariales de IA, sistemas multi-agente e implementaciones RAG. Integración de modelos generativos con APIs corporativas y bases de datos.",
         "en": "Enterprise AI solution design, multi-agent systems, and RAG implementations. Integration of generative models with corporate APIs and databases."
       },
-      "tags": ["LangGraph", "RAG", "Multi-agent", "Redis", "MongoDB"]
+      "tags": [
+        "LangGraph",
+        "RAG",
+        "Multi-agent",
+        "Redis",
+        "MongoDB"
+      ]
     },
     {
       "company": "Vertebra",
-      "role": { "es": "Desarrollador Fullstack", "en": "Fullstack Developer" },
-      "period": { "es": "Ago 2024 - May 2025", "en": "Aug 2024 - May 2025" },
+      "role": {
+        "es": "Desarrollador Fullstack",
+        "en": "Fullstack Developer"
+      },
+      "period": {
+        "es": "Ago 2024 - May 2025",
+        "en": "Aug 2024 - May 2025"
+      },
       "description": {
         "es": "Desarrollo frontend y backend, optimización de procesos de desarrollo y contribución a proyectos complejos.",
         "en": "Frontend and backend development, optimizing development processes and contributing to complex projects."
       },
-      "tags": ["React", "Node.js", "TypeScript"]
+      "tags": [
+        "React",
+        "Node.js",
+        "TypeScript"
+      ]
     },
     {
       "company": "Vertebra",
-      "role": { "es": "Desarrollador Frontend", "en": "Frontend Developer" },
-      "period": { "es": "Abr 2023 - Ago 2024", "en": "Apr 2023 - Aug 2024" },
+      "role": {
+        "es": "Desarrollador Frontend",
+        "en": "Frontend Developer"
+      },
+      "period": {
+        "es": "Abr 2023 - Ago 2024",
+        "en": "Apr 2023 - Aug 2024"
+      },
       "description": {
         "es": "Desarrollo y mantenimiento de aplicaciones React con TypeScript. Mejoras en código legacy y optimizaciones de UI.",
         "en": "Developed and maintained React applications using TypeScript. Worked on legacy code improvements and UI optimizations."
       },
-      "tags": ["React", "TypeScript", "Node.js"]
+      "tags": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ]
     },
     {
       "company": "Grooming Argentina",
-      "role": { "es": "Desarrollador Web", "en": "Web Developer" },
-      "period": { "es": "Feb 2023 - Abr 2023", "en": "Feb 2023 - Apr 2023" },
+      "role": {
+        "es": "Desarrollador Web",
+        "en": "Web Developer"
+      },
+      "period": {
+        "es": "Feb 2023 - Abr 2023",
+        "en": "Feb 2023 - Apr 2023"
+      },
       "description": {
         "es": "Desarrollo web para un proyecto gubernamental enfocado en la prevención y concientización del abuso infantil en línea.",
         "en": "Web development for a government-focused project addressing online child abuse prevention and awareness."
       },
-      "tags": ["Web Development"]
+      "tags": [
+        "Web Development"
+      ]
     },
     {
       "company": "Henry",
-      "role": { "es": "Asistente de Enseñanza", "en": "Teaching Assistant" },
-      "period": { "es": "Ene 2023 - Mar 2023", "en": "Jan 2023 - Mar 2023" },
+      "role": {
+        "es": "Asistente de Enseñanza",
+        "en": "Teaching Assistant"
+      },
+      "period": {
+        "es": "Ene 2023 - Mar 2023",
+        "en": "Jan 2023 - Mar 2023"
+      },
       "description": {
         "es": "Mentoría de estudiantes, guía en programación en pares, apoyo en resolución de problemas y fortalecimiento de la colaboración comunitaria.",
         "en": "Mentored students, guided pair programming, supported problem-solving, and strengthened community collaboration."
       },
-      "tags": ["Mentoring", "Pair Programming"]
+      "tags": [
+        "Mentoring",
+        "Pair Programming"
+      ]
     },
     {
       "company": "SENA - Sennova Lab",
-      "role": { "es": "Desarrollador", "en": "Developer" },
-      "period": { "es": "Jul 2022 - Dic 2022", "en": "Jul 2022 - Dec 2022" },
+      "role": {
+        "es": "Desarrollador",
+        "en": "Developer"
+      },
+      "period": {
+        "es": "Jul 2022 - Dic 2022",
+        "en": "Jul 2022 - Dec 2022"
+      },
       "description": {
         "es": "Desarrollo de una plataforma de gestión de propuestas para 'Fondo Emprender'. Construcción de un kit educativo IoT con sistema de hogar inteligente controlado vía aplicación web.",
         "en": "Developed a proposal management platform for 'Fondo Emprender'. Built an IoT educational kit including a smart home system controlled via web application."
       },
-      "tags": ["React", "Firebase", "IoT"]
+      "tags": [
+        "React",
+        "Firebase",
+        "IoT"
+      ]
     },
     {
       "company": "Meintegral S.A.S",
-      "role": { "es": "Desarrollador Web", "en": "Web Developer" },
-      "period": { "es": "2021 - 2022", "en": "2021 - 2022" },
+      "role": {
+        "es": "Desarrollador Web",
+        "en": "Web Developer"
+      },
+      "period": {
+        "es": "2021 - 2022",
+        "en": "2021 - 2022"
+      },
       "description": {
         "es": "Desarrollo de sistemas de gestión de inventario y aplicación de detección de síntomas de pandemia. Participación en el despliegue en producción de sistemas de inventario de farmacia.",
         "en": "Developed inventory management systems and a pandemic symptom detection application. Participated in production deployment of pharmacy inventory systems."
       },
-      "tags": ["PHP", "JavaScript", "Bootstrap"]
+      "tags": [
+        "PHP",
+        "JavaScript",
+        "Bootstrap"
+      ]
     }
   ],
   "projects": [
@@ -94,7 +172,12 @@
         "es": "Diseño e implementación de sistemas de IA basados en flujos de trabajo multi-agente con LangGraph. Incluye orquestación de tareas, ejecución de herramientas, integración de APIs, gestión de contexto y memoria de agentes con estado.",
         "en": "Design and implementation of AI systems based on multi-agent workflows using LangGraph. Includes task orchestration, tool execution, API integrations, context management, and stateful agent memory."
       },
-      "tags": ["LangGraph", "Multi-agent", "LLMs", "APIs"]
+      "tags": [
+        "LangGraph",
+        "Multi-agent",
+        "LLMs",
+        "APIs"
+      ]
     },
     {
       "title": {
@@ -105,7 +188,12 @@
         "es": "Recuperación basada en vectores, inyección de contexto en prompts de LLM, almacenamiento de memoria persistente con Redis y MongoDB, diseño de bases de conocimiento estructuradas y generación controlada de respuestas.",
         "en": "Vector-based retrieval, context injection into LLM prompts, persistent memory storage using Redis and MongoDB, structured knowledge base design, and controlled response generation to reduce hallucinations."
       },
-      "tags": ["RAG", "Embeddings", "Redis", "MongoDB"]
+      "tags": [
+        "RAG",
+        "Embeddings",
+        "Redis",
+        "MongoDB"
+      ]
     },
     {
       "title": {
@@ -116,71 +204,247 @@
         "es": "Automatización de flujos de trabajo internos, integración con bases de datos y APIs corporativas, soporte en procesos de toma de decisiones y reducción de carga operativa manual.",
         "en": "Automating internal workflows, integrating with databases and corporate APIs, supporting decision-making processes, and reducing manual operational overhead."
       },
-      "tags": ["Automation", "APIs", "Node.js"]
+      "tags": [
+        "Automation",
+        "APIs",
+        "Node.js"
+      ]
     }
   ],
   "skills": [
-    { "name": "LLMs", "level": 5, "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" } },
-    { "name": "LangGraph", "level": 5, "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" } },
-    { "name": "RAG", "level": 5, "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" } },
-    { "name": "Multi-agent Systems", "level": 4, "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" } },
-    { "name": "Prompt Engineering", "level": 4, "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" } },
-    { "name": "Node.js", "level": 5, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "Express", "level": 4, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "REST APIs", "level": 5, "category": { "es": "Backend", "en": "Backend" } },
-    { "name": "MongoDB", "level": 4, "category": { "es": "Bases de Datos", "en": "Databases" } },
-    { "name": "PostgreSQL", "level": 3, "category": { "es": "Bases de Datos", "en": "Databases" } },
-    { "name": "MySQL", "level": 3, "category": { "es": "Bases de Datos", "en": "Databases" } },
-    { "name": "Redis", "level": 4, "category": { "es": "Bases de Datos", "en": "Databases" } },
-    { "name": "React", "level": 5, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "TypeScript", "level": 4, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "Redux", "level": 3, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "Vue", "level": 3, "category": { "es": "Frontend", "en": "Frontend" } },
-    { "name": "Docker", "level": 3, "category": { "es": "Herramientas", "en": "Tools" } }
+    {
+      "name": "LLMs",
+      "level": 5,
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "name": "LangGraph",
+      "level": 5,
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "name": "RAG",
+      "level": 5,
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "name": "Multi-agent Systems",
+      "level": 4,
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "name": "Prompt Engineering",
+      "level": 4,
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      }
+    },
+    {
+      "name": "Node.js",
+      "level": 5,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "Express",
+      "level": 4,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "REST APIs",
+      "level": 5,
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      }
+    },
+    {
+      "name": "MongoDB",
+      "level": 4,
+      "category": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "name": "PostgreSQL",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "name": "MySQL",
+      "level": 3,
+      "category": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "name": "Redis",
+      "level": 4,
+      "category": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      }
+    },
+    {
+      "name": "React",
+      "level": 5,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "TypeScript",
+      "level": 4,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "Redux",
+      "level": 3,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "Vue",
+      "level": 3,
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      }
+    },
+    {
+      "name": "Docker",
+      "level": 3,
+      "category": {
+        "es": "Herramientas",
+        "en": "Tools"
+      }
+    }
   ],
   "stack": [
     {
-      "category": { "es": "Inteligencia Artificial", "en": "Artificial Intelligence" },
+      "category": {
+        "es": "Inteligencia Artificial",
+        "en": "Artificial Intelligence"
+      },
       "items": [
-        { "name": "LLMs" },
-        { "name": "LangGraph" },
-        { "name": "Multi-agent Systems" },
-        { "name": "RAG" },
-        { "name": "Prompt Engineering" }
+        {
+          "name": "LLMs"
+        },
+        {
+          "name": "LangGraph"
+        },
+        {
+          "name": "Multi-agent Systems"
+        },
+        {
+          "name": "RAG"
+        },
+        {
+          "name": "Prompt Engineering"
+        }
       ]
     },
     {
-      "category": { "es": "Backend", "en": "Backend" },
+      "category": {
+        "es": "Backend",
+        "en": "Backend"
+      },
       "items": [
-        { "name": "Node.js" },
-        { "name": "Express" },
-        { "name": "REST APIs" }
+        {
+          "name": "Node.js"
+        },
+        {
+          "name": "Express"
+        },
+        {
+          "name": "REST APIs"
+        }
       ]
     },
     {
-      "category": { "es": "Bases de Datos", "en": "Databases" },
+      "category": {
+        "es": "Bases de Datos",
+        "en": "Databases"
+      },
       "items": [
-        { "name": "MongoDB" },
-        { "name": "PostgreSQL" },
-        { "name": "MySQL" },
-        { "name": "Redis" }
+        {
+          "name": "MongoDB"
+        },
+        {
+          "name": "PostgreSQL"
+        },
+        {
+          "name": "MySQL"
+        },
+        {
+          "name": "Redis"
+        }
       ]
     },
     {
-      "category": { "es": "Frontend", "en": "Frontend" },
+      "category": {
+        "es": "Frontend",
+        "en": "Frontend"
+      },
       "items": [
-        { "name": "React" },
-        { "name": "TypeScript" },
-        { "name": "Redux" },
-        { "name": "Vue" }
+        {
+          "name": "React"
+        },
+        {
+          "name": "TypeScript"
+        },
+        {
+          "name": "Redux"
+        },
+        {
+          "name": "Vue"
+        }
       ]
     },
     {
-      "category": { "es": "Herramientas", "en": "Tools" },
+      "category": {
+        "es": "Herramientas",
+        "en": "Tools"
+      },
       "items": [
-        { "name": "Docker" },
-        { "name": "API Integrations" },
-        { "name": "Business Process Automation" }
+        {
+          "name": "Docker"
+        },
+        {
+          "name": "API Integrations"
+        },
+        {
+          "name": "Business Process Automation"
+        }
       ]
     }
   ]
